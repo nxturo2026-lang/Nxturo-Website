@@ -1,0 +1,35 @@
+@media (max-width:768px){
+
+  .navbar{
+    position:relative;
+  }
+
+  .menu-icon{
+    display:block;
+    font-size:28px;
+    color:white;
+    cursor:pointer;
+    z-index:1002;
+  }
+
+  .nav-btn{
+    display:none;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-links.active{
+    display:flex;
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#0d0d0d;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    padding:20px 0;
+  }
+}

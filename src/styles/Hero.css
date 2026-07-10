@@ -1,0 +1,25 @@
+.hero{
+  min-height:85vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:#6C63FF;
+  filter:blur(180px);
+  opacity:0.2;
+  border-radius:50%;
+  top:-100px;
+  right:-100px;
+  z-index:-1;
+}
