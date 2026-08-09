@@ -1,0 +1,185 @@
+/* ================= FOOTER ================= */
+
+.footer {
+  position: relative;
+
+  padding: 65px 8% 28px;
+
+  background: #f7f7fb;
+
+  border-top: 1px solid #e9eaf1;
+
+  overflow: hidden;
+}
+
+
+/* ================= SOFT GLOW ================= */
+
+.footer::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  left: -160px;
+  bottom: -180px;
+
+  background: #ddd9ff;
+
+  filter: blur(100px);
+
+  opacity: 0.3;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* ================= MAIN CONTAINER ================= */
+
+.footer-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding-bottom: 45px;
+}
+
+
+/* ================= BRAND ================= */
+
+.footer-brand {
+  width: 100%;
+
+  max-width: 520px;
+
+  text-align: center;
+}
+
+.footer-brand h2 {
+  margin: 0 0 10px;
+
+  font-family: "Nunito Sans", sans-serif;
+
+  font-size: 28px;
+
+  font-weight: 900;
+
+  letter-spacing: -0.04em;
+
+  color: #171a35;
+}
+
+.footer-brand p {
+  margin: 0 auto;
+
+  max-width: 420px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  color: #747c90;
+}
+
+
+/* ================= BOTTOM ================= */
+
+.footer-bottom {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #e5e6ed;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color: #9299a9;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 700px) {
+
+  .footer {
+    padding: 55px 25px 25px;
+  }
+
+  .footer-container {
+    padding-bottom: 38px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 8px;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .footer {
+    padding: 50px 20px 22px;
+  }
+
+  .footer-brand h2 {
+    font-size: 26px;
+  }
+
+  .footer-brand p {
+    font-size: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 10px;
+  }
+}

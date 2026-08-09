@@ -2,23 +2,67 @@ import "../styles/Portfolio.css";
 
 function Portfolio() {
   return (
-   <section className="portfolio" id="portfolio" data-aos="fade-up">
-      <h2>Our Portfolio</h2>
+    <section className="portfolio" id="portfolio">
 
-      <p>
-        We are currently building exciting digital projects.
-        Real client works will be showcased here as we grow.
-      </p>
+      <div className="portfolio-container">
 
-      <div className="portfolio-coming">
-        <h3>🚀 Exciting Projects Coming Soon</h3>
+        <span className="portfolio-label">
+          OUR WORK
+        </span>
 
-        <p>
-          NXTURO is committed to delivering high-quality websites,
-          branding, social media management and digital marketing
-          solutions. Our upcoming projects will be displayed here.
+        <h2>
+          Building What's
+          <br />
+          <em>Next.</em>
+        </h2>
+
+        <p className="portfolio-description">
+          We’re currently working on our first digital projects.
+          This space will soon showcase the brands, websites and
+          creative experiences we build.
         </p>
+
+        <div className="portfolio-card">
+
+          <div className="portfolio-card-content">
+
+            <span>COMING SOON</span>
+
+            <h3>
+              Something great
+              <br />
+              is taking shape.
+            </h3>
+
+            <p>
+              NXTURO is at the beginning of its journey.
+              We’re building meaningful digital experiences
+              and will showcase our work here as it grows.
+            </p>
+
+          </div>
+
+          <div className="portfolio-mark">
+            N
+          </div>
+
+        </div>
+
+        <div className="portfolio-cta">
+
+          <span>
+            Have a project in mind?
+          </span>
+
+          <a href="#contact">
+            Let’s Talk
+            <span>→</span>
+          </a>
+
+        </div>
+
       </div>
+
     </section>
   );
 }

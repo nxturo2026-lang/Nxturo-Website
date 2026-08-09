@@ -5,26 +5,65 @@ import "../styles/Navbar.css";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
-    <nav className="navbar">
-      <div className="logo">NXTURO</div>
+    <header className="navbar">
+      <div className="navbar-container">
 
-      <div
-        className="menu-icon"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
+        {/* Logo */}
+        <a href="#home" className="navbar-logo" onClick={closeMenu}>
+          <img
+            src="/logo.png"
+            alt="NXTURO"
+          />
+        </a>
+
+        {/* Navigation */}
+        <nav className={`nav-menu ${menuOpen ? "active" : ""}`}>
+          <a href="#home" onClick={closeMenu}>
+            Home
+          </a>
+
+          <a href="#services" onClick={closeMenu}>
+            Services
+          </a>
+
+          <a href="#about" onClick={closeMenu}>
+            About
+          </a>
+
+          <a href="#portfolio" onClick={closeMenu}>
+            Portfolio
+          </a>
+
+          <a href="#contact" onClick={closeMenu}>
+            Contact
+          </a>
+        </nav>
+
+        {/* Let's Talk */}
+        <a
+          href="#contact"
+          className="navbar-btn"
+          onClick={closeMenu}
+        >
+          Let's Talk
+        </a>
+
+        {/* Mobile Menu */}
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
       </div>
-
-      <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-        <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-<li><a href="#services" onClick={() => setMenuOpen(false)}>Services</a></li>
-<li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-<li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-      </ul>
-
-      <button className="nav-btn">Let's Talk</button>
-    </nav>
+    </header>
   );
 }
 

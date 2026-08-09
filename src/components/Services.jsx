@@ -1,77 +1,116 @@
-import {
-  FaGlobe,
-  FaBullhorn,
-  FaPaintBrush,
-  FaVideo,
-  FaRobot,
-  FaChartLine,
-} from "react-icons/fa";
 import "../styles/Services.css";
 
+import {
+  FiMonitor,
+  FiShare2,
+  FiPenTool,
+  FiVideo,
+  FiZap,
+  FiTrendingUp,
+  FiArrowUpRight,
+} from "react-icons/fi";
+
 function Services() {
+  const services = [
+    {
+      icon: <FiMonitor />,
+      title: "Website Development",
+      description:
+        "Fast, responsive and conversion-focused websites built to give your brand a strong digital presence.",
+    },
+    {
+      icon: <FiShare2 />,
+      title: "Social Media Management",
+      description:
+        "Creative content and strategic social media management that builds visibility, engagement and trust.",
+    },
+    {
+      icon: <FiPenTool />,
+      title: "Graphic Design",
+      description:
+        "Distinctive visuals and brand creatives that communicate your identity with clarity and consistency.",
+    },
+    {
+      icon: <FiVideo />,
+      title: "Video Editing",
+      description:
+        "Professional video content crafted to capture attention and connect your story with your audience.",
+    },
+    {
+      icon: <FiZap />,
+      title: "AI Creatives",
+      description:
+        "Smart AI-powered creatives and visual concepts designed to help modern brands stand out.",
+    },
+    {
+      icon: <FiTrendingUp />,
+      title: "Digital Marketing",
+      description:
+        "Practical digital strategies that improve visibility, reach the right audience and support business growth.",
+    },
+  ];
+
   return (
-    <section
-  className="services"
-  id="services"
-  data-aos="fade-up"
->
-      <h2>Our Services</h2>
+    <section className="services" id="services">
 
-      <p>
-        We help businesses build a powerful digital presence with creative and
-        modern solutions.
-      </p>
+      <div className="services-intro">
 
-      <div className="services-grid">
-<div className="service-card">
-  <FaGlobe className="service-icon" />
-  <h3>Website Development</h3>
-  <p>
-    Modern, responsive and fast websites designed for your business.
-  </p>
-</div>
+        <span className="section-label">
+          WHAT WE DO
+        </span>
 
-        <div className="service-card">
-  <FaBullhorn className="service-icon" />
-  <h3>Social Media Management</h3>
-  <p>
-    Manage and grow your social media with engaging content.
-  </p>
-</div>
+        <h2>
+          Digital solutions for{" "}
+          <span>modern brands.</span>
+        </h2>
 
-        <div className="service-card">
-  <FaPaintBrush className="service-icon" />
-  <h3>Graphic Design</h3>
-  <p>
-    Creative designs for branding, posters and social media.
-  </p>
-</div>
+        <p>
+          From strategy and design to development and marketing,
+          we create digital experiences that help brands connect,
+          communicate and grow.
+        </p>
 
-        <div className="service-card">
-  <FaVideo className="service-icon" />
-  <h3>Video Editing</h3>
-  <p>
-    Professional editing for reels, ads and promotional videos.
-  </p>
-</div>
-
-        <div className="service-card">
-  <FaRobot className="service-icon" />
-  <h3>AI Creatives</h3>
-  <p>
-    AI-powered creative visuals for modern businesses.
-  </p>
-</div>
-
-        <div className="service-card">
-  <FaChartLine className="service-icon" />
-  <h3>Digital Marketing</h3>
-  <p>
-    SEO and marketing strategies that help your business grow.
-  </p>
-</div>
+        <a href="#contact" className="services-cta">
+          Let's build together
+          <FiArrowUpRight />
+        </a>
 
       </div>
+
+
+      <div className="services-grid">
+
+        {services.map((service, index) => (
+          <article className="service-card" key={index}>
+
+            <div className="service-top">
+
+              <div className="service-icon">
+                {service.icon}
+              </div>
+
+              <FiArrowUpRight className="service-arrow" />
+
+            </div>
+
+            <div className="service-body">
+
+              <h3>{service.title}</h3>
+
+              <p>{service.description}</p>
+
+            </div>
+
+            <a href="#contact" className="service-link">
+              Explore service
+              <FiArrowUpRight />
+            </a>
+
+          </article>
+        ))}
+
+      </div>
+
     </section>
   );
 }
