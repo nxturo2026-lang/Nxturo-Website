@@ -57,7 +57,10 @@
 
   animation: imageZoom 5s ease;
 
-  /* Smooth image → cream transition */
+  /*
+    Cream → image soft merge
+  */
+
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -350,7 +353,12 @@
 
   transform: translateY(-2px);
 
-  box-shadow: 0 8px 20px rgba(112, 16, 47, 0.15);
+  box-shadow: 0 8px 20px rgba(
+    112,
+    16,
+    47,
+    0.15
+  );
 }
 
 .hero-btn:hover span {
@@ -486,11 +494,26 @@
   transform: scale(1);
 
   transition:
-    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.45s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    height 0.45s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
     background-color 0.45s ease,
     opacity 0.45s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.45s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
 }
 
 
@@ -577,79 +600,180 @@
 @media (max-width: 700px) {
 
   .hero {
-    height: 650px;
+    height: 720px;
+
+    background: #fbf3e8;
   }
+
+
+  /* ========================================
+     HERO CONTAINER
+  ======================================== */
 
   .hero-container {
     padding: 0 25px;
+
+    align-items: flex-start;
+
+    position: relative;
+
+    z-index: 5;
   }
+
+
+  /* ========================================
+     HERO CONTENT
+  ======================================== */
 
   .hero-content {
     width: 100%;
 
     max-width: 100%;
 
-    margin-top: 85px;
+    margin-top: 315px;
 
     text-align: left;
+
+    position: relative;
+
+    z-index: 6;
   }
 
+
+  /* ========================================
+     LABEL
+  ======================================== */
+
+  .hero-label {
+    margin-bottom: 16px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  /* ========================================
+     TITLE
+  ======================================== */
+
   .hero h1 {
-    font-size: 45px;
+    font-size: 42px;
 
     line-height: 1.04;
 
     letter-spacing: -1px;
+
+    color: #54152f;
+
+    text-align: left;
   }
+
+  .hero h1 span {
+    color: #c45177;
+  }
+
+
+  /* ========================================
+     DESCRIPTION
+  ======================================== */
 
   .hero-content > p {
-    max-width: 400px;
+    max-width: 100%;
+
+    margin: 20px 0 25px;
 
     font-size: 12px;
+
+    line-height: 1.7;
+
+    color: #603c4b;
+
+    text-align: left;
   }
 
 
-  /* Mobile image */
+  /* ========================================
+     BUTTON
+  ======================================== */
+
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+
+  .hero-btn {
+    min-height: 43px;
+
+    padding: 0 19px;
+
+    font-size: 10px;
+  }
+
+
+  /* ========================================
+     MOBILE IMAGE
+  ======================================== */
 
   .hero-image {
+    position: absolute;
+
     top: 0;
-    right: 0;
+    left: 0;
 
     width: 100%;
-    height: 70%;
+    height: 390px;
+
+    object-fit: cover;
 
     object-position: 65% center;
 
     -webkit-mask-image: linear-gradient(
       to bottom,
       black 0%,
-      black 45%,
-      rgba(0, 0, 0, 0.5) 65%,
+      black 48%,
+      rgba(0, 0, 0, 0.85) 58%,
+      rgba(0, 0, 0, 0.35) 72%,
       transparent 100%
     );
 
     mask-image: linear-gradient(
       to bottom,
       black 0%,
-      black 45%,
-      rgba(0, 0, 0, 0.5) 65%,
+      black 48%,
+      rgba(0, 0, 0, 0.85) 58%,
+      rgba(0, 0, 0, 0.35) 72%,
       transparent 100%
     );
   }
 
+
+  /* ========================================
+     IMAGE → CREAM MERGE
+  ======================================== */
+
   .hero-image-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
     background: linear-gradient(
       to bottom,
       rgba(251, 243, 232, 0) 0%,
-      rgba(251, 243, 232, 0.05) 35%,
-      rgba(251, 243, 232, 0.60) 55%,
-      #fbf3e8 72%,
+      rgba(251, 243, 232, 0) 40%,
+      rgba(251, 243, 232, 0.10) 48%,
+      rgba(251, 243, 232, 0.45) 58%,
+      rgba(251, 243, 232, 0.85) 68%,
+      #fbf3e8 78%,
       #fbf3e8 100%
     );
   }
 
 
-  /* Center bottom slider */
+  /* ========================================
+     MOBILE SLIDER
+  ======================================== */
 
   .hero-slider {
     left: 50%;
@@ -664,6 +788,25 @@
   .slider-arrow {
     display: none;
   }
+
+  .slide-dots {
+    gap: 4px;
+  }
+
+  .slide-dot {
+    width: 15px;
+    height: 14px;
+  }
+
+  .slide-dot span {
+    width: 4px;
+    height: 4px;
+  }
+
+  .slide-dot.active span {
+    width: 17px;
+    height: 4px;
+  }
 }
 
 
@@ -674,7 +817,7 @@
 @media (max-width: 480px) {
 
   .hero {
-    height: 680px;
+    height: 730px;
   }
 
   .hero-container {
@@ -682,24 +825,38 @@
   }
 
   .hero-content {
-    margin-top: 75px;
+    margin-top: 300px;
   }
 
   .hero h1 {
-    font-size: 40px;
+    font-size: 38px;
+
+    line-height: 1.05;
   }
 
   .hero-label {
-    font-size: 11px;
+    font-size: 9px;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 1.4px;
+
+    margin-bottom: 14px;
+  }
+
+  .hero-content > p {
+    margin-top: 18px;
+
+    font-size: 11.5px;
+
+    line-height: 1.7;
+  }
+
+  .hero-image {
+    height: 370px;
+
+    object-position: 65% center;
   }
 
   .hero-slider {
-    left: 50%;
-
-    bottom: 17px;
-
-    transform: translateX(-50%);
+    bottom: 16px;
   }
 }

@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className="navbar">
+
+      {/* ========================================
+          NAVBAR CONTAINER
+      ======================================== */}
+
       <div className="navbar-container">
 
-        {/* LOGO */}
-        <a href="#home" className="navbar-logo">
-          {/* Logo later add pannalam */}
-        </a>
+        {/* ========================================
+            DESKTOP NAVIGATION
+        ======================================== */}
 
-        {/* NAVIGATION */}
         <nav className="navbar-links">
 
           <a href="#home" className="active">
@@ -23,15 +32,11 @@ const Navbar = () => {
           </a>
 
           <a href="#about">
-            About Us
+            About
           </a>
 
-          <a href="#work">
-            Work
-          </a>
-
-          <a href="#events">
-            Events
+          <a href="#portfolio">
+            Portfolio
           </a>
 
           <a href="#contact">
@@ -40,16 +45,35 @@ const Navbar = () => {
 
         </nav>
 
-        {/* LET'S TALK */}
-        <a href="#contact" className="navbar-cta">
-          <span className="cta-text">Let's Talk</span>
-          <span className="cta-arrow">→</span>
+
+        {/* ========================================
+            DESKTOP CTA
+        ======================================== */}
+
+        <a
+          href="#contact"
+          className="navbar-cta"
+        >
+          Let's Talk
+
+          <span className="cta-arrow">
+            →
+          </span>
         </a>
 
-        {/* MOBILE MENU */}
+
+        {/* ========================================
+            MOBILE MENU BUTTON
+        ======================================== */}
+
         <button
-          className="navbar-menu"
-          aria-label="Open menu"
+          type="button"
+          className={`navbar-menu ${
+            menuOpen ? "open" : ""
+          }`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
         >
           <span></span>
           <span></span>
@@ -57,6 +81,74 @@ const Navbar = () => {
         </button>
 
       </div>
+
+
+      {/* ========================================
+          MOBILE MENU
+      ======================================== */}
+
+      <div
+        className={`mobile-menu ${
+          menuOpen ? "mobile-menu-open" : ""
+        }`}
+      >
+
+        <nav className="mobile-menu-links">
+
+          <a
+            href="#home"
+            onClick={closeMenu}
+          >
+            Home
+          </a>
+
+          <a
+            href="#services"
+            onClick={closeMenu}
+          >
+            Services
+          </a>
+
+          <a
+            href="#about"
+            onClick={closeMenu}
+          >
+            About
+          </a>
+
+          <a
+            href="#portfolio"
+            onClick={closeMenu}
+          >
+            Portfolio
+          </a>
+
+          <a
+            href="#contact"
+            onClick={closeMenu}
+          >
+            Contact
+          </a>
+
+
+          {/* MOBILE CTA */}
+
+          <a
+            href="#contact"
+            className="mobile-menu-cta"
+            onClick={closeMenu}
+          >
+            Let's Talk
+
+            <span>
+              →
+            </span>
+          </a>
+
+        </nav>
+
+      </div>
+
     </header>
   );
 };
