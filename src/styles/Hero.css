@@ -1,25 +1,24 @@
-/* ================= HERO ================= */
+/* ========================================
+   HERO
+======================================== */
 
 .hero {
   position: relative;
 
-  min-height: 720px;
-
   width: 100%;
+  height: 610px;
 
   overflow: hidden;
 
-  background: #f7f7fb;
-
-  display: flex;
-
-  align-items: center;
+  background: #fbf3e8;
 }
 
 
-/* ================= BACKGROUND IMAGE ================= */
+/* ========================================
+   HERO IMAGE
+======================================== */
 
-.hero-bg {
+.hero-visual {
   position: absolute;
 
   inset: 0;
@@ -29,194 +28,279 @@
 
   z-index: 0;
 
-  overflow: hidden;
-
-  pointer-events: none;
+  animation: heroFade 0.7s ease;
 }
 
-
-.hero-bg img {
-  position: absolute;
-
-  inset: 0;
+.hero-image-wrapper {
+  position: relative;
 
   width: 100%;
   height: 100%;
 
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 72%;
+  height: 100%;
+
+  display: block;
+
   object-fit: cover;
 
-  object-position: center;
+  object-position: center center;
 
-  opacity: 0.72;
+  animation: imageZoom 5s ease;
 
-  mix-blend-mode: multiply;
+  /* Smooth image → cream transition */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 10%,
+    rgba(0, 0, 0, 0.45) 20%,
+    rgba(0, 0, 0, 0.8) 30%,
+    black 40%,
+    black 100%
+  );
 
-  filter: saturate(0.78);
-
-  transform: scale(1.02);
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 10%,
+    rgba(0, 0, 0, 0.45) 20%,
+    rgba(0, 0, 0, 0.8) 30%,
+    black 40%,
+    black 100%
+  );
 }
 
 
-/* ================= IMAGE BLEND ================= */
+/* ========================================
+   CREAM → IMAGE MERGE
+======================================== */
 
-.hero::after {
-  content: "";
-
+.hero-image-overlay {
   position: absolute;
 
   inset: 0;
 
-  z-index: 1;
+  z-index: 2;
 
   pointer-events: none;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(247, 247, 251, 0.98) 0%,
-      rgba(247, 247, 251, 0.92) 24%,
-      rgba(247, 247, 251, 0.72) 45%,
-      rgba(247, 247, 251, 0.40) 68%,
-      rgba(247, 247, 251, 0.12) 100%
-    );
+  background: linear-gradient(
+    90deg,
+    #fbf3e8 0%,
+    #fbf3e8 25%,
+    rgba(251, 243, 232, 0.98) 32%,
+    rgba(251, 243, 232, 0.85) 39%,
+    rgba(251, 243, 232, 0.55) 47%,
+    rgba(251, 243, 232, 0.22) 57%,
+    rgba(251, 243, 232, 0) 68%
+  );
 }
 
 
-/* ================= CONTENT CONTAINER ================= */
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imageZoom {
+  from {
+    transform: scale(1.04);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes contentSlide {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* ========================================
+   HERO CONTAINER
+======================================== */
 
 .hero-container {
   position: relative;
 
-  z-index: 2;
+  z-index: 4;
 
   width: 100%;
+  height: 100%;
 
-  max-width: 1200px;
+  max-width: 1440px;
 
   margin: 0 auto;
 
-  padding: 100px 8%;
+  padding: 0 70px;
 
-  box-sizing: border-box;
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: flex-start;
 }
 
 
-/* ================= HERO CONTENT ================= */
+/* ========================================
+   HERO CONTENT
+======================================== */
 
 .hero-content {
   width: 100%;
 
-  max-width: 650px;
+  max-width: 590px;
 
+  margin-top: 105px;
+
+  text-align: left;
+
+  animation: contentSlide 0.7s ease;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+.hero-label {
   display: flex;
 
-  flex-direction: column;
+  align-items: center;
 
-  align-items: flex-start;
+  justify-content: flex-start;
+
+  gap: 9px;
+
+  margin-bottom: 20px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 1.8px;
+
+  color: #b83f69;
+
+  text-transform: uppercase;
+}
+
+.hero-label span {
+  font-size: 11px;
+
+  color: #b83f69;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.hero h1 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(52px, 5.2vw, 74px);
+
+  font-weight: 500;
+
+  line-height: 1.02;
+
+  letter-spacing: -1.8px;
+
+  color: #54152f;
+
+  text-align: left;
+}
+
+.hero h1 span {
+  font-family: "Playfair Display", serif;
+
+  font-size: inherit;
+
+  font-weight: inherit;
+
+  line-height: inherit;
+
+  letter-spacing: inherit;
+
+  color: #c45177;
+}
+
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.hero-content > p {
+  max-width: 530px;
+
+  margin: 27px 0 30px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  letter-spacing: 0;
+
+  color: #603c4b;
 
   text-align: left;
 }
 
 
-/* ================= LABEL ================= */
-
-.hero-label {
-  display: inline-flex;
-
-  align-items: center;
-
-  margin-bottom: 22px;
-
-  padding: 7px 13px;
-
-  border: 1px solid rgba(99, 87, 217, 0.18);
-
-  border-radius: 30px;
-
-  background: rgba(255, 255, 255, 0.55);
-
-  backdrop-filter: blur(10px);
-
-  -webkit-backdrop-filter: blur(10px);
-
-  font-family: "Inter", sans-serif;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: 0.13em;
-
-  color: #6357d9;
-}
-
-
-/* ================= HEADING ================= */
-
-.hero-content h1 {
-  margin: 0;
-
-  font-family: "Nunito Sans", sans-serif;
-
-  font-size: clamp(48px, 6vw, 76px);
-
-  font-weight: 900;
-
-  line-height: 1.02;
-
-  letter-spacing: -0.055em;
-
-  color: #171a35;
-}
-
-
-.hero-content h1 span {
-  color: #6357d9;
-}
-
-
-/* ================= DESCRIPTION ================= */
-
-.hero-content p {
-  max-width: 530px;
-
-  margin: 26px 0 0;
-
-  font-family: "Inter", sans-serif;
-
-  font-size: 15px;
-
-  font-weight: 400;
-
-  line-height: 1.8;
-
-  color: #687086;
-}
-
-
-/* ================= BUTTON AREA ================= */
+/* ========================================
+   BUTTON
+======================================== */
 
 .hero-buttons {
   display: flex;
 
   align-items: center;
 
-  gap: 12px;
-
-  margin-top: 34px;
+  justify-content: flex-start;
 }
 
-
-/* ================= BUTTON COMMON ================= */
-
 .hero-btn {
-  min-width: 155px;
+  min-height: 45px;
 
-  height: 48px;
-
-  padding: 0 22px;
-
-  box-sizing: border-box;
+  padding: 0 21px;
 
   display: inline-flex;
 
@@ -224,187 +308,398 @@
 
   justify-content: center;
 
-  border-radius: 9px;
+  gap: 13px;
 
-  font-family: "Inter", sans-serif;
+  border-radius: 6px;
 
-  font-size: 12px;
+  background: #8e1239;
 
-  font-weight: 600;
+  border: 1px solid #8e1239;
+
+  color: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  line-height: 1;
 
   text-decoration: none;
 
   transition:
-    transform 0.3s ease,
-    background 0.3s ease,
+    background-color 0.3s ease,
     border-color 0.3s ease,
-    color 0.3s ease,
+    transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
+.hero-btn span {
+  font-size: 16px;
 
-/* ================= PRIMARY BUTTON ================= */
+  line-height: 1;
 
-.hero-btn-primary {
-  background: #171a35;
+  transition: transform 0.3s ease;
+}
 
-  border: 1px solid #171a35;
+.hero-btn:hover {
+  background: #70102f;
 
-  color: #ffffff;
+  border-color: #70102f;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(112, 16, 47, 0.15);
+}
+
+.hero-btn:hover span {
+  transform: translateX(4px);
 }
 
 
-.hero-btn-primary:hover {
-  transform: translateY(-3px);
+/* ========================================
+   PREMIUM SLIDER
+======================================== */
 
-  background: #6357d9;
+.hero-slider {
+  position: absolute;
 
-  border-color: #6357d9;
+  z-index: 10;
 
-  box-shadow:
-    0 12px 25px rgba(99, 87, 217, 0.18);
+  left: 50%;
+
+  bottom: 18px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
 }
 
 
-/* ================= SECONDARY BUTTON ================= */
+/* ========================================
+   SLIDER ARROWS
+======================================== */
 
-.hero-btn-secondary {
-  background: rgba(255, 255, 255, 0.65);
+.slider-arrow {
+  width: 22px;
+  height: 22px;
 
-  border: 1px solid #dfe1ea;
+  padding: 0;
 
-  color: #454c62;
+  border: none;
 
-  backdrop-filter: blur(8px);
+  background: transparent;
 
-  -webkit-backdrop-filter: blur(8px);
+  color: #8e1239;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  opacity: 0.75;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.slider-arrow:hover {
+  opacity: 1;
+
+  color: #c45177;
+
+  transform: translateY(-1px);
 }
 
 
-.hero-btn-secondary:hover {
-  transform: translateY(-3px);
+/* ========================================
+   DOT CONTAINER
+======================================== */
 
-  background: #ffffff;
+.slide-dots {
+  display: flex;
 
-  border-color: #aaa4ee;
+  align-items: center;
 
-  color: #6357d9;
+  justify-content: center;
+
+  gap: 5px;
 }
 
 
-/* ================= TABLET ================= */
+/* ========================================
+   INDIVIDUAL DOT
+======================================== */
 
-@media (max-width: 900px) {
+.slide-dot {
+  width: 17px;
+  height: 14px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* ========================================
+   DOT
+======================================== */
+
+.slide-dot span {
+  width: 4px;
+  height: 4px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: #d6a5ad;
+
+  opacity: 0.7;
+
+  transform: scale(1);
+
+  transition:
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.45s ease,
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ========================================
+   ACTIVE DOT
+======================================== */
+
+.slide-dot.active span {
+  width: 18px;
+  height: 4px;
+
+  border-radius: 10px;
+
+  background: #8e1239;
+
+  opacity: 1;
+
+  transform: scale(1.02);
+}
+
+
+/* ========================================
+   DOT HOVER
+======================================== */
+
+.slide-dot:hover span {
+  opacity: 1;
+
+  transform: scale(1.25);
+}
+
+.slide-dot.active:hover span {
+  transform: scale(1.02);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
 
   .hero {
-    min-height: 680px;
+    height: 580px;
   }
 
   .hero-container {
-    padding: 100px 7%;
+    padding: 0 45px;
   }
 
   .hero-content {
-    max-width: 580px;
+    max-width: 530px;
+
+    margin-top: 95px;
   }
 
-  .hero-content h1 {
-    font-size: clamp(46px, 7vw, 64px);
+  .hero h1 {
+    font-size: 58px;
   }
 
-  .hero-bg img {
-    object-position: 60% center;
-
-    opacity: 0.55;
+  .hero-image {
+    width: 75%;
   }
 
-  .hero::after {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(247, 247, 251, 0.98) 0%,
-        rgba(247, 247, 251, 0.88) 45%,
-        rgba(247, 247, 251, 0.48) 100%
-      );
+  .hero-image-overlay {
+    background: linear-gradient(
+      90deg,
+      #fbf3e8 0%,
+      #fbf3e8 20%,
+      rgba(251, 243, 232, 0.97) 28%,
+      rgba(251, 243, 232, 0.82) 37%,
+      rgba(251, 243, 232, 0.55) 46%,
+      rgba(251, 243, 232, 0.18) 59%,
+      rgba(251, 243, 232, 0) 73%
+    );
   }
 }
 
 
-/* ================= MOBILE ================= */
+/* ========================================
+   MOBILE
+======================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
   .hero {
-    min-height: 680px;
-
-    align-items: center;
+    height: 650px;
   }
 
   .hero-container {
-    padding: 90px 22px 80px;
+    padding: 0 25px;
   }
 
   .hero-content {
+    width: 100%;
+
     max-width: 100%;
 
-    align-items: center;
+    margin-top: 85px;
 
-    text-align: center;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 45px;
+
+    line-height: 1.04;
+
+    letter-spacing: -1px;
+  }
+
+  .hero-content > p {
+    max-width: 400px;
+
+    font-size: 12px;
+  }
+
+
+  /* Mobile image */
+
+  .hero-image {
+    top: 0;
+    right: 0;
+
+    width: 100%;
+    height: 70%;
+
+    object-position: 65% center;
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 45%,
+      rgba(0, 0, 0, 0.5) 65%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 45%,
+      rgba(0, 0, 0, 0.5) 65%,
+      transparent 100%
+    );
+  }
+
+  .hero-image-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(251, 243, 232, 0) 0%,
+      rgba(251, 243, 232, 0.05) 35%,
+      rgba(251, 243, 232, 0.60) 55%,
+      #fbf3e8 72%,
+      #fbf3e8 100%
+    );
+  }
+
+
+  /* Center bottom slider */
+
+  .hero-slider {
+    left: 50%;
+
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    gap: 8px;
+  }
+
+  .slider-arrow {
+    display: none;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .hero {
+    height: 680px;
+  }
+
+  .hero-container {
+    padding: 0 20px;
+  }
+
+  .hero-content {
+    margin-top: 75px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
   }
 
   .hero-label {
-    margin-bottom: 18px;
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
   }
 
-  .hero-content h1 {
-    font-size: 44px;
+  .hero-slider {
+    left: 50%;
 
-    line-height: 1.05;
+    bottom: 17px;
 
-    letter-spacing: -0.045em;
-  }
-
-  .hero-content p {
-    max-width: 440px;
-
-    font-size: 13px;
-
-    line-height: 1.75;
-  }
-
-  .hero-buttons {
-    width: 100%;
-
-    max-width: 360px;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-    margin-top: 28px;
-  }
-
-  .hero-btn {
-    width: 100%;
-
-    min-width: 0;
-  }
-
-  .hero-bg img {
-    object-position: 65% center;
-
-    opacity: 0.42;
-
-    transform: scale(1.08);
-  }
-
-  .hero::after {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(247, 247, 251, 0.92) 0%,
-        rgba(247, 247, 251, 0.76) 45%,
-        rgba(247, 247, 251, 0.88) 100%
-      );
+    transform: translateX(-50%);
   }
 }

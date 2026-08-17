@@ -1,70 +1,64 @@
-import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import React from "react";
 import "../styles/Navbar.css";
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
+const Navbar = () => {
   return (
     <header className="navbar">
       <div className="navbar-container">
 
-        {/* Logo */}
-        <a href="#home" className="navbar-logo" onClick={closeMenu}>
-          <img
-            src="/logo.png"
-            alt="NXTURO"
-          />
+        {/* LOGO */}
+        <a href="#home" className="navbar-logo">
+          {/* Logo later add pannalam */}
         </a>
 
-        {/* Navigation */}
-        <nav className={`nav-menu ${menuOpen ? "active" : ""}`}>
-          <a href="#home" onClick={closeMenu}>
+        {/* NAVIGATION */}
+        <nav className="navbar-links">
+
+          <a href="#home" className="active">
             Home
           </a>
 
-          <a href="#services" onClick={closeMenu}>
+          <a href="#services">
             Services
           </a>
 
-          <a href="#about" onClick={closeMenu}>
-            About
+          <a href="#about">
+            About Us
           </a>
 
-          <a href="#portfolio" onClick={closeMenu}>
-            Portfolio
+          <a href="#work">
+            Work
           </a>
 
-          <a href="#contact" onClick={closeMenu}>
+          <a href="#events">
+            Events
+          </a>
+
+          <a href="#contact">
             Contact
           </a>
+
         </nav>
 
-        {/* Let's Talk */}
-        <a
-          href="#contact"
-          className="navbar-btn"
-          onClick={closeMenu}
-        >
-          Let's Talk
+        {/* LET'S TALK */}
+        <a href="#contact" className="navbar-cta">
+          <span className="cta-text">Let's Talk</span>
+          <span className="cta-arrow">→</span>
         </a>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
+          className="navbar-menu"
+          aria-label="Open menu"
         >
-          {menuOpen ? <FaTimes /> : <FaBars />}
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
       </div>
     </header>
   );
-}
+};
 
 export default Navbar;
