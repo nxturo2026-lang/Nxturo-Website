@@ -1,156 +1,86 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/Navbar.css";
 
-const Navbar = () => {
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Events & Shoot", href: "#events" },
+  { label: "Contact", href: "#contact" },
+];
+
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="navbar">
-
-      {/* ========================================
-          NAVBAR CONTAINER
-      ======================================== */}
-
       <div className="navbar-container">
-
-        {/* ========================================
-            DESKTOP NAVIGATION
-        ======================================== */}
-
-        <nav className="navbar-links">
-
-          <a href="#home" className="active">
-            Home
-          </a>
-
-          <a href="#services">
-            Services
-          </a>
-
-          <a href="#about">
-            About
-          </a>
-
-          <a href="#portfolio">
-            Portfolio
-          </a>
-
-          <a href="#contact">
-            Contact
-          </a>
-
-        </nav>
-
-
-        {/* ========================================
-            DESKTOP CTA
-        ======================================== */}
-
         <a
-          href="#contact"
-          className="navbar-cta"
+          href="#home"
+          className="navbar-logo"
+          aria-label="NXTURO Home"
+          onClick={closeMenu}
         >
-          Let's Talk
-
-          <span className="cta-arrow">
-            →
-          </span>
+          <img src="/nxturo%20logo.png" alt="NXTURO Logo" />
         </a>
 
+        <nav className="navbar-links" aria-label="Main navigation">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              key={item.href}
+              className="navbar-link"
+              onClick={closeMenu}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
 
-        {/* ========================================
-            MOBILE MENU BUTTON
-        ======================================== */}
+        <a href="#contact" className="navbar-cta">
+          <span>Let's Connect</span>
+          <span className="cta-arrow" aria-hidden="true">↗</span>
+        </a>
 
         <button
           type="button"
-          className={`navbar-menu ${
-            menuOpen ? "open" : ""
-          }`}
+          className={`navbar-menu ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
-
       </div>
 
-
-      {/* ========================================
-          MOBILE MENU
-      ======================================== */}
-
       <div
-        className={`mobile-menu ${
-          menuOpen ? "mobile-menu-open" : ""
-        }`}
+        id="mobile-navigation"
+        className={`mobile-menu ${menuOpen ? "mobile-menu-open" : ""}`}
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
       >
-
-        <nav className="mobile-menu-links">
-
-          <a
-            href="#home"
-            onClick={closeMenu}
-          >
-            Home
-          </a>
-
-          <a
-            href="#services"
-            onClick={closeMenu}
-          >
-            Services
-          </a>
-
-          <a
-            href="#about"
-            onClick={closeMenu}
-          >
-            About
-          </a>
-
-          <a
-            href="#portfolio"
-            onClick={closeMenu}
-          >
-            Portfolio
-          </a>
-
-          <a
-            href="#contact"
-            onClick={closeMenu}
-          >
-            Contact
-          </a>
-
-
-          {/* MOBILE CTA */}
+        <nav className="mobile-menu-links" aria-label="Mobile navigation">
+          {navItems.map((item) => (
+            <a href={item.href} key={item.href} onClick={closeMenu}>
+              <span>{item.label}</span>
+              <span className="mobile-link-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
 
           <a
             href="#contact"
             className="mobile-menu-cta"
             onClick={closeMenu}
           >
-            Let's Talk
-
-            <span>
-              →
-            </span>
+            Let's Connect <span aria-hidden="true">↗</span>
           </a>
-
         </nav>
-
       </div>
-
     </header>
   );
-};
-
-export default Navbar;
+}

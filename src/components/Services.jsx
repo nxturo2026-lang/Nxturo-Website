@@ -1,116 +1,112 @@
 import "../styles/Services.css";
 
 import {
-  FiMonitor,
-  FiShare2,
   FiPenTool,
   FiVideo,
   FiZap,
+  FiShare2,
   FiTrendingUp,
+  FiBarChart2,
   FiArrowUpRight,
 } from "react-icons/fi";
 
-function Services() {
-  const services = [
-    {
-      icon: <FiMonitor />,
-      title: "Website Development",
-      description:
-        "Fast, responsive and conversion-focused websites built to give your brand a strong digital presence.",
-    },
-    {
-      icon: <FiShare2 />,
-      title: "Social Media Management",
-      description:
-        "Creative content and strategic social media management that builds visibility, engagement and trust.",
-    },
-    {
-      icon: <FiPenTool />,
-      title: "Graphic Design",
-      description:
-        "Distinctive visuals and brand creatives that communicate your identity with clarity and consistency.",
-    },
-    {
-      icon: <FiVideo />,
-      title: "Video Editing",
-      description:
-        "Professional video content crafted to capture attention and connect your story with your audience.",
-    },
-    {
-      icon: <FiZap />,
-      title: "AI Creatives",
-      description:
-        "Smart AI-powered creatives and visual concepts designed to help modern brands stand out.",
-    },
-    {
-      icon: <FiTrendingUp />,
-      title: "Digital Marketing",
-      description:
-        "Practical digital strategies that improve visibility, reach the right audience and support business growth.",
-    },
-  ];
+const services = [
+  {
+    number: "01",
+    icon: <FiPenTool />,
+    title: "Graphic Design",
+    description:
+      "Creative and eye-catching designs that bring your brand identity to life.",
+  },
+  {
+    number: "02",
+    icon: <FiVideo />,
+    title: "Video Editing",
+    description:
+      "Engaging videos and reels that tell your story and capture attention.",
+  },
+  {
+    number: "03",
+    icon: <FiZap />,
+    title: "AI Creatives",
+    description:
+      "Innovative AI-powered visuals and creative content for modern brands.",
+  },
+  {
+    number: "04",
+    icon: <FiShare2 />,
+    title: "Social Media Management",
+    description:
+      "Consistent content planning and page management for your business.",
+  },
+  {
+    number: "05",
+    icon: <FiTrendingUp />,
+    title: "Social Media Marketing",
+    description:
+      "Creative social campaigns that help your brand connect with its audience.",
+  },
+  {
+    number: "06",
+    icon: <FiBarChart2 />,
+    title: "Digital Marketing",
+    description:
+      "Strategic digital promotions to strengthen your online presence.",
+  },
+];
 
+function Services() {
   return (
     <section className="services" id="services">
-
       <div className="services-intro">
-
-        <span className="section-label">
-          WHAT WE DO
-        </span>
+        <span className="section-label">OUR SERVICES</span>
 
         <h2>
-          Digital solutions for{" "}
-          <span>modern brands.</span>
+          Creative ideas.
+          <br />
+          <span>Digital possibilities.</span>
         </h2>
 
         <p>
-          From strategy and design to development and marketing,
-          we create digital experiences that help brands connect,
-          communicate and grow.
+          We help businesses build a stronger brand presence through
+          creative design, engaging content and digital solutions.
         </p>
 
         <a href="#contact" className="services-cta">
-          Let's build together
-          <FiArrowUpRight />
+          Let's work together
+          <FiArrowUpRight aria-hidden="true" />
         </a>
-
       </div>
 
-
       <div className="services-grid">
-
-        {services.map((service, index) => (
-          <article className="service-card" key={index}>
-
+        {services.map((service) => (
+          <article className="service-card" key={service.number}>
             <div className="service-top">
-
-              <div className="service-icon">
+              <div className="service-icon" aria-hidden="true">
                 {service.icon}
               </div>
 
-              <FiArrowUpRight className="service-arrow" />
-
+              <span className="service-number">
+                {service.number}
+              </span>
             </div>
 
             <div className="service-body">
-
               <h3>{service.title}</h3>
-
               <p>{service.description}</p>
-
             </div>
 
-            <a href="#contact" className="service-link">
-              Explore service
-              <FiArrowUpRight />
+            <a
+              href="#contact"
+              className="service-link"
+              aria-label={`Enquire about ${service.title}`}
+            >
+              Let's talk
+              <FiArrowUpRight aria-hidden="true" />
             </a>
-
           </article>
         ))}
-
       </div>
-
     </section>
   );
 }

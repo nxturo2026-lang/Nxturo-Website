@@ -1,231 +1,178 @@
-/* ========================================
-   NAVBAR
-======================================== */
+/* ================= NAVBAR ================= */
 
 .navbar {
   width: 100%;
-  height: 76px;
-
-  background-color: #6f1235;
-
+  height: 78px;
+  background-color: #6F1235;
   display: flex;
   align-items: center;
-
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
-
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 22px rgba(40, 5, 20, 0.12);
 }
-
-
-/* ========================================
-   CONTAINER
-======================================== */
 
 .navbar-container {
   width: 100%;
   max-width: 1440px;
-
   height: 100%;
-
   margin: 0 auto;
-
-  padding: 0 70px;
-
+  padding: 0 6%;
   display: flex;
   align-items: center;
 }
 
+/* LOGO */
 
-/* ========================================
-   DESKTOP NAVIGATION
-======================================== */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 120px;
+  height: 72px;
+  padding: 3px;
+  background: transparent;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.04);
+}
+
+/* DESKTOP LINKS */
 
 .navbar-links {
   margin-left: auto;
-  margin-right: 38px;
-
+  margin-right: 30px;
   display: flex;
   align-items: center;
-
-  gap: 36px;
+  gap: 27px;
 }
 
 .navbar-links a {
   position: relative;
-
-  padding: 29px 0;
-
-  color: #fbf3e8;
-
+  padding: 12px 0;
+  color: #FBF3E8;
   font-family: "Poppins", sans-serif;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  line-height: 1;
-
-  letter-spacing: 0.15px;
-
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
   text-decoration: none;
-
-  transition:
-    color 0.3s ease,
-    opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-
-/* ========================================
-   NAV LINK HOVER
-======================================== */
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 0;
+  height: 2px;
+  border-radius: 5px;
+  background-color: #D8A0AC;
+  transition: width 0.3s ease;
+}
 
 .navbar-links a:hover {
-  color: #d98aa4;
+  color: #D8A0AC;
 }
 
-
-/* ========================================
-   ACTIVE HOME
-======================================== */
-
-.navbar-links a.active {
-  color: #fbf3e8;
+.navbar-links a:hover::after {
+  width: 100%;
 }
 
-.navbar-links a.active::after {
-  display: none;
-}
-
-
-/* ========================================
-   DESKTOP CTA
-======================================== */
+/* LET'S CONNECT BUTTON */
 
 .navbar-cta {
-  min-width: 128px;
-  height: 42px;
-
-  padding: 0 20px;
-
+  min-height: 44px;
+  padding: 0 19px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 9px;
-
   flex-shrink: 0;
-
-  border-radius: 24px;
-
-  background-color: #fbf3e8;
-
-  border: 1px solid #fbf3e8;
-
-  color: #6f1235;
-
+  border: 1px solid #FBF3E8;
+  border-radius: 999px;
+  background-color: #FBF3E8;
+  color: #6F1235;
   font-family: "Poppins", sans-serif;
-
   font-size: 12px;
   font-weight: 600;
-
-  line-height: 1;
-
   letter-spacing: 0.1px;
-
+  white-space: nowrap;
   text-decoration: none;
-
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
-
-
-/* ========================================
-   CTA HOVER
-======================================== */
 
 .navbar-cta:hover {
-  background-color: #d98aa4;
-
-  border-color: #d98aa4;
-
-  color: #6f1235;
-
-  transform: translateY(-1px);
+  background-color: #D8A0AC;
+  border-color: #D8A0AC;
+  color: #4F0D27;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(216, 160, 172, 0.2);
 }
-
-
-/* ========================================
-   CTA ARROW
-======================================== */
 
 .cta-arrow {
   font-size: 15px;
-
   line-height: 1;
-
   transition: transform 0.3s ease;
 }
 
 .navbar-cta:hover .cta-arrow {
-  transform: translateX(4px);
+  transform: translate(3px, -2px);
 }
 
-
-/* ========================================
-   MOBILE MENU BUTTON
-======================================== */
+/* MOBILE MENU BUTTON */
 
 .navbar-menu {
   display: none;
-
-  width: 40px;
-  height: 40px;
-
+  width: 42px;
+  height: 42px;
   margin-left: auto;
-
   padding: 0;
-
   border: none;
-
-  outline: none;
-
+  border-radius: 8px;
   background: transparent;
-
   cursor: pointer;
-
   align-items: center;
   justify-content: center;
-
   flex-direction: column;
-
-  gap: 5px;
+  gap: 6px;
 }
 
 .navbar-menu span {
-  width: 22px;
-  height: 1.5px;
-
   display: block;
-
-  background-color: #fbf3e8;
-
-  border-radius: 2px;
-
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+  width: 23px;
+  height: 2px;
+  border-radius: 3px;
+  background-color: #FBF3E8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-
-/* ========================================
-   MOBILE MENU BUTTON ANIMATION
-======================================== */
+.navbar-menu:hover span {
+  background-color: #D8A0AC;
+}
 
 .navbar-menu.open span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .navbar-menu.open span:nth-child(2) {
@@ -233,217 +180,133 @@
 }
 
 .navbar-menu.open span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-
-/* ========================================
-   MOBILE MENU
-======================================== */
+/* MOBILE DROPDOWN */
 
 .mobile-menu {
   position: absolute;
-
-  top: 76px;
+  top: 100%;
   left: 0;
-
   width: 100%;
-
-  background-color: #6f1235;
-
-  border-top: 1px solid rgba(
-    251,
-    243,
-    232,
-    0.12
-  );
-
-  padding: 0 24px;
-
   max-height: 0;
-
+  padding: 0 24px;
   overflow: hidden;
-
+  visibility: hidden;
   opacity: 0;
-
-  transform: translateY(-10px);
-
+  background-color: #6F1235;
+  border-top: 1px solid rgba(251, 243, 232, 0.14);
+  box-shadow: 0 12px 22px rgba(40, 5, 20, 0.12);
+  transform: translateY(-8px);
   pointer-events: none;
-
   transition:
-    max-height 0.45s ease,
+    max-height 0.4s ease,
+    padding 0.3s ease,
     opacity 0.3s ease,
-    transform 0.35s ease,
-    padding 0.35s ease;
+    transform 0.3s ease,
+    visibility 0.3s ease;
 }
 
-
-/* ========================================
-   MOBILE MENU OPEN
-======================================== */
-
 .mobile-menu-open {
-  max-height: 500px;
-
-  padding-top: 18px;
+  max-height: 440px;
+  padding-top: 14px;
   padding-bottom: 22px;
-
+  visibility: visible;
   opacity: 1;
-
   transform: translateY(0);
-
   pointer-events: auto;
 }
 
-
-/* ========================================
-   MOBILE MENU LINKS
-======================================== */
-
 .mobile-menu-links {
   display: flex;
-
   flex-direction: column;
-
   align-items: stretch;
-
-  gap: 0;
 }
 
-.mobile-menu-links a {
+.mobile-menu-links > a {
   width: 100%;
-
-  padding: 14px 4px;
-
-  color: #fbf3e8;
-
+  padding: 15px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FBF3E8;
   font-family: "Poppins", sans-serif;
-
   font-size: 14px;
-
   font-weight: 500;
-
-  line-height: 1.2;
-
+  line-height: 1.5;
   text-decoration: none;
-
-  border-bottom: 1px solid rgba(
-    251,
-    243,
-    232,
-    0.08
-  );
-
-  transition:
-    color 0.3s ease,
-    padding-left 0.3s ease;
+  border-bottom: 1px solid rgba(251, 243, 232, 0.1);
+  transition: color 0.25s ease, padding-left 0.25s ease;
 }
 
-.mobile-menu-links a:hover {
-  color: #d98aa4;
-
-  padding-left: 8px;
+.mobile-menu-links > a:hover {
+  color: #D8A0AC;
+  padding-left: 10px;
 }
 
+.mobile-link-arrow {
+  color: #D8A0AC;
+}
 
-/* ========================================
-   MOBILE CTA
-======================================== */
+/* MOBILE CONNECT BUTTON */
 
 .mobile-menu-links .mobile-menu-cta {
+  width: fit-content;
+  min-height: 44px;
   margin-top: 18px;
-
-  padding: 12px 20px;
-
-  width: 130px;
-
-  border: 1px solid #fbf3e8;
-
-  border-radius: 24px;
-
-  background-color: #fbf3e8;
-
-  color: #6f1235;
-
+  padding: 0 20px;
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
-  gap: 8px;
-
+  gap: 10px;
+  border: 1px solid #FBF3E8;
+  border-radius: 999px;
+  background-color: #FBF3E8;
+  color: #6F1235;
+  font-family: "Poppins", sans-serif;
   font-size: 12px;
-
   font-weight: 600;
-
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .mobile-menu-links .mobile-menu-cta:hover {
   padding-left: 20px;
-
-  background-color: #d98aa4;
-
-  border-color: #d98aa4;
-
-  color: #6f1235;
-
-  transform: translateY(-1px);
+  background-color: #D8A0AC;
+  border-color: #D8A0AC;
+  color: #4F0D27;
+  transform: translateY(-2px);
 }
 
-.mobile-menu-cta span {
-  font-size: 15px;
-
-  transition: transform 0.3s ease;
-}
-
-.mobile-menu-cta:hover span {
-  transform: translateX(4px);
-}
-
-
-/* ========================================
-   TABLET
-======================================== */
+/* TABLET */
 
 @media (max-width: 1100px) {
-
   .navbar-container {
-    padding: 0 45px;
+    padding: 0 4%;
   }
 
   .navbar-links {
-    gap: 25px;
-
-    margin-right: 25px;
+    gap: 18px;
+    margin-right: 20px;
   }
 
   .navbar-links a {
-    font-size: 13px;
+    font-size: 12px;
+  }
 
-    font-weight: 600;
+  .navbar-logo {
+    width: 105px;
   }
 
   .navbar-cta {
-    min-width: 115px;
-
+    padding: 0 14px;
     font-size: 11px;
-
-    font-weight: 600;
   }
 }
 
-
-/* ========================================
-   MOBILE
-======================================== */
+/* MOBILE */
 
 @media (max-width: 800px) {
-
   .navbar {
     height: 70px;
   }
@@ -452,40 +315,51 @@
     padding: 0 24px;
   }
 
-  .navbar-links {
+  .navbar-links,
+  .navbar-container > .navbar-cta {
     display: none;
   }
 
-  .navbar-cta {
-    display: none;
+  .navbar-logo {
+    width: 100px;
+    height: 64px;
   }
 
   .navbar-menu {
     display: flex;
   }
-
-  .mobile-menu {
-    top: 70px;
-  }
 }
 
-
-/* ========================================
-   SMALL MOBILE
-======================================== */
+/* SMALL MOBILE */
 
 @media (max-width: 480px) {
-
   .navbar-container {
     padding: 0 18px;
+  }
+
+  .navbar-logo {
+    width: 90px;
+    height: 60px;
   }
 
   .mobile-menu {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
 
-  .mobile-menu-links a {
-    font-size: 13px;
+/* ACCESSIBILITY */
+
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+  outline: 2px solid #D8A0AC;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar *,
+  .mobile-menu {
+    transition: none !important;
+    animation: none !important;
   }
 }
